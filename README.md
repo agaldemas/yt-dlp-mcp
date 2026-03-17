@@ -41,7 +41,7 @@ Add to your `~/.cline/mcp_settings.json`:
   "mcpServers": {
     "yt-dlp": {
       "command": "uv",
-      "args": ["run", "--directory", "~/Documents/mcp/yt-dlp-mcp", "server.py"]
+      "args": ["run", "--directory", "<your_path>/yt-dlp-mcp", "server.py"]
     }
   }
 }
@@ -56,7 +56,7 @@ Add to your `~/.opencode/mcp.json`:
   "servers": {
     "yt-dlp": {
       "command": "uv",
-      "args": ["run", "--directory", "~/Documents/mcp/yt-dlp-mcp", "server.py"]
+      "args": ["run", "--directory", "<your_path>/yt-dlp-mcp", "server.py"]
     }
   }
 }
@@ -71,7 +71,7 @@ Add to your `claude_desktop_config.json`:
   "mcpServers": {
     "yt-dlp": {
       "command": "uv",
-      "args": ["run", "--directory", "~/Documents/mcp/yt-dlp-mcp", "server.py"]
+      "args": ["run", "--directory", "<your_path>/yt-dlp-mcp", "server.py"]
     }
   }
 }
@@ -87,7 +87,7 @@ Add to your `~/.config/zed/settings.json`:
     "servers": {
       "yt-dlp": {
         "command": "uv",
-        "args": ["run", "--directory", "~/Documents/mcp/yt-dlp-mcp", "server.py"]
+        "args": ["run", "--directory", "<your_path>/yt-dlp-mcp", "server.py"]
       }
     }
   }
@@ -103,7 +103,7 @@ Add to your `~/.cursor/mcp.json`:
   "mcpServers": {
     "yt-dlp": {
       "command": "uv",
-      "args": ["run", "--directory", "~/Documents/mcp/yt-dlp-mcp", "server.py"]
+      "args": ["run", "--directory", "<your_path>/yt-dlp-mcp", "server.py"]
     }
   }
 }
