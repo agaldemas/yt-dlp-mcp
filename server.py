@@ -40,9 +40,9 @@ def _scrape_facebook_lib(url: str) -> dict:
 
 @mcp.tool()
 def extract_video_info(
-    url: str = Field(description="The URL of the video to extract")
+    url: str = Field(description="The URL of the page for getting info about the video to extract")
 ) -> dict:
-    """Extracts metadata and direct link from a video."""
+    """Extracts metadata and direct link from a video page from youtube, tiktok, facebook"""
     ydl_opts = {'quiet': True, 'skip_download': True, 'no_warnings': True}
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -66,10 +66,10 @@ def extract_video_info(
 
 @mcp.tool()
 def download_video(
-    url: str = Field(description="The URL of the video to download")
+    url: str = Field(description="The URL of the page of the video to download")
 ) -> dict:
     """
-    Downloads a video and generates both a universal MP4 (H.264/AAC/FastStart) 
+    Downloads a video from url extracted from the page and generates both a universal MP4 (H.264/AAC/FastStart) 
     and a separate MP3 audio file.
     """
     # 1. First download the best multiplexed MP4 (simplest, most reliable base)

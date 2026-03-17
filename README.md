@@ -6,9 +6,9 @@ Standalone MCP server for extracting metadata and downloading videos (TikTok, Yo
 
 - Extract video metadata (title, description, uploader, duration)
 - Get direct `.mp4` link without downloading
-- **Download videos locally** to a `downloads` folder
+- **Download videos locally** to a `downloads` folder (now generates both universal MP4 and separate MP3 audio file)
 - **Clear downloads cache** to free up disk space
-- Support for multiple platforms (TikTok, YouTube, Vimeo, etc.)
+- Support for multiple platforms (TikTok, YouTube, Facebook, Vimeo, etc.)
 
 ## Installation
 
@@ -113,13 +113,16 @@ Add to your `~/.cursor/mcp.json`:
 
 #### 1. extract_video_info
 
-Extracts video metadata and direct link without downloading.
+Extracts metadata and direct link from a video. Supports Facebook via lightweight regex and fb-video scraper as fallback.
 
-```
-extract_video_info("https://www.tiktok.com/@username/video/123456789")
+```python
+extract_video_info(url="https://www.tiktok.com/@username/video/123456789")
 ```
 
-Returns:
+**Parameters:**
+- `url` (str): The URL of the video to extract
+
+**Returns:**
 - `title` : Video title
 - `description` : Video description
 - `uploader` : Uploader name
@@ -127,36 +130,42 @@ Returns:
 - `url` : Direct video link (.mp4)
 - `webpage_url` : Original page URL
 - `thumbnail` : Thumbnail URL
+- `error` : Error message if extraction failed
+- `source` : Scraper source (if using Facebook fallbacks)
 
 #### 2. download_video
 
-Downloads the video to the local `downloads` folder and returns the local file path.
+Downloads a video and generates both a universal MP4 (H.264/AAC/FastStart) and a separate MP3 audio file to the local `downloads` folder.
 
-```
-download_video("https://www.tiktok.com/@username/video/123456789")
+```python
+download_video(url="https://www.tiktok.com/@username/video/123456789")
 ```
 
-Returns:
+**Parameters:**
+- `url` (str): The URL of the video to download
+
+**Returns:**
 - `success` : Boolean indicating success
 - `title` : Video title
-- `video_id` : Unique video identifier
-- `filename` : Local filename
-- `local_path` : Absolute path to the downloaded file
-- `webpage_url` : Original page URL
+- `filename_mp4` : Local MP4 filename
+- `filename_mp3` : Local MP3 filename
+- `local_path_mp4` : Absolute path to the downloaded MP4 file
+- `local_path_mp3` : Absolute path to the downloaded MP3 file
 - `message` : Status message
+- `error` : Error message if download failed
 
 #### 3. clear_downloads
 
-Clears all files from the downloads folder (cache management).
+Clears all files from the downloads folder.
 
-```
+```python
 clear_downloads()
 ```
 
-Returns:
+**Returns:**
 - `success` : Boolean indicating success
 - `deleted_count` : Number of files deleted
-- `message` : Status message
+- `error` : Error message if operation failed
 
 ## Updating dependencies
 
