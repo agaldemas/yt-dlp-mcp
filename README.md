@@ -34,11 +34,15 @@ The server runs in `stdio` mode and is ready to be used by any MCP client.
 
 #### Cline /cline (VS Code)
 
-Add to your `~/.cline/mcp_settings.json`:
+Add to your `~/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json` an entry to "mcpServers" element:
+
+the above path is for macos, with cline installed as VS code extension !
+you'll have to check for linux ou windows using the cline mcp configuration management interface, it opens the file for you ! with "Configure MCP Servers" Button !
 
 ```json
 {
   "mcpServers": {
+    "other-mcp-server": { },
     "yt-dlp": {
       "command": "uv",
       "args": ["run", "--directory", "<your_path>/yt-dlp-mcp", "server.py"]
@@ -46,7 +50,7 @@ Add to your `~/.cline/mcp_settings.json`:
   }
 }
 ```
-
+don't use `~` in <your_path>, else cline won't find the file, use true root path !
 #### OpenCode
 
 Add to your `~/.opencode/mcp.json`:
